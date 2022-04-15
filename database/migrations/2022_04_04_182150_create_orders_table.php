@@ -15,7 +15,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('client_id');
+             $table->foreign('client_id')->references('id')->on('clients');
+             $table->unsignedBigInteger('produkt_id');
+             $table->foreign('produkt_id')->references('id')->on('produkts');
+             $table->timestamps();
         });
     }
 
